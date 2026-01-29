@@ -1,47 +1,48 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div class="w-1/2 mx-auto p-4">
+    <div class="p-4 bg-white border border-gray-200">
+      <div class="mb-4">
+        <input
+          type="text"
+          v-model="post.title"
+          placeholder="title"
+          class="border border-gray-200 p-4 w-full"
+        />
+      </div>
+      <div class="mb-4">
+        <textarea
+          v-model="post.content"
+          placeholder="content"
+          class="border border-gray-200 p-4 w-full"
+        ></textarea>
+      </div>
+      <div>
+        <a
+          @click.prevent="storePost"
+          href="#"
+          class="inline-block px-3 py-2 bg-sky-600 border border-sky-700 text-white"
+          >Add post</a
+        >
+      </div>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script>
+export default {
+  name: 'Our App',
+  data() {
+    return {
+      post: {},
+    }
+  },
+  methods: {
+    storePost() {
+      console.log(this.post.title)
+      console.log(this.post.content)
+    },
+  },
 }
+</script>
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+<style scoped></style>
